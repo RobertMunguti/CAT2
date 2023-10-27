@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Gallery</title>
+    <style>
+        /* Style for the thumbnail images */
+        .thumbnail {
+            float: left;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        /* Style for the enlarged image container */
+        .enlarged-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            z-index: 999;
+        }
+
+        /* Style for the enlarged image */
+        .enlarged-image {
+            max-width: 80%;
+            max-height: 80%;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        /* Close button for the enlarged image */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+
+    <!-- Thumbnail images that expand when clicked -->
+    <div class="thumbnail" onclick="expandImage('image1.jpg')">
+        <img src="image1.jpg" alt="Image 1">
+    </div>
+    <div class="thumbnail" onclick="expandImage('image2.jpg')">
+        <img src="image2.jpg" alt="Image 2">
+    </div>
+    <div class="thumbnail" onclick="expandImage('image3.jpg')">
+        <img src="image3.jpg" alt="Image 3">
+    </div>
+
+    <!-- Enlarged image container (hidden by default) -->
+    <div class="enlarged-container" id="enlargedContainer">
+        <span class="close-button" onclick="closeImage()">&times;</span>
+        <img class="enlarged-image" id="enlargedImage">
+    </div>
+
+    <script>
+        // Function to expand the clicked image
+        function expandImage(imageSrc) {
+            var enlargedContainer = document.getElementById("enlargedContainer");
+            var enlargedImage = document.getElementById("enlargedImage");
+
+            enlargedImage.src = imageSrc;
+            enlargedContainer.style.display = "block";
+        }
+
+        // Function to close the enlarged image
+        function closeImage() {
+            var enlargedContainer = document.getElementById("enlargedContainer");
+            enlargedContainer.style.display = "none";
+        }
+    </script>
+</body>
+</html>
